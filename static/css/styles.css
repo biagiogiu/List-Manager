@@ -1,0 +1,312 @@
+body
+{
+    display: flex;
+    min-height: 100vh;
+    background: #100c0c;
+    background: url("../images/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.background-gradient
+{
+    background: #fff;
+}
+
+.background-gradient::before
+{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, #fb0094, #ff8800, #ffff00, #00ff00, #00fff7, #011eff, #fb0094);
+    animation: gradient-animation 500s linear infinite;
+    background-size: 500%;
+}
+.background-gradient::after
+{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, #fb0094, #ff8800, #ffff00, #00ff00, #00fff7, #011eff, #fb0094);
+    animation: gradient-animation 500s linear infinite;
+    background-size: 500%;
+    filter: blur(20px);
+}
+
+@keyframes gradient-animation
+{
+  0% {
+    background-position: 0 0;
+  }
+  0% {
+    background-position: 500% 0;
+  }
+}
+
+.blurred-bg
+{
+    background: rgba(247, 247, 255,0.7);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.9);
+}
+
+.main-container
+{
+    padding-top:60px;
+    padding-bottom:2.5rem;
+    display:flex;
+    flex-flow:column;
+    height:100%;
+    width:100%;
+}
+.box
+{
+    border: solid 1px #fff;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 10px 30px;
+    height: 100%;
+}
+.list-container
+{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+.list
+{
+    margin-bottom: 10px;
+    list-style: none;
+    position: relative;
+}
+
+
+.list-header:has(.list-checkbox:checked) + .item-container {max-height: 500px; min-height: 34px; overflow:visible;}
+.list-header:has(.list-checkbox:checked) .add-item-button {display: flex;}
+.list-checkbox {position: absolute; opacity: 0; height: 0px;}
+.list-header
+{
+    width: 100%;
+    position: relative;
+    background: rgba(240, 240, 255,0.7);
+    border: solid 1px #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.list-header:hover, .add-list-button:hover {background: rgba(250, 180, 176, 0.9);}
+.list-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.list-label
+{
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    min-height: 34px;
+    padding: 5px;
+}
+.item-container
+{
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height:0px;
+    background: rgba(123, 123, 130, 0.3);
+    border-radius: 0px 0px 10px 10px;
+    overflow: hidden;
+    transition: max-height .4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+.list-item
+{
+    list-style: none;
+    position: relative;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    &:last-child{
+        border-radius: 0px 0px 10px 10px;
+    }
+}
+.list-item:hover
+{
+    background: rgba(250, 180, 176, 0.9);
+    box-shadow: 0 5px 5px rgba(0,0,0,.3);
+}
+.list-item:dragging
+{
+    background: rgba(250, 180, 176, 0.9);
+    box-shadow: 0 5px 5px rgba(0,0,0,.3);
+}
+.add-container
+{
+    display: flex;
+    justify-content:center;
+    position: relative;
+    align-items:center;
+    width:100%;
+}
+.add-list-button
+{
+    display: flex;
+    cursor: pointer;
+    background: rgba(240, 240, 255,0.7);
+    border: solid 1px #fff;
+    align-items: center;
+    position: relative;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0,0,0,.5);
+}
+.edit-list-button
+{
+    width = 20px;
+    height = 20px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.add-item-button
+{
+    display: none;
+    width = 20px;
+    height = 20px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: 3rem;
+    transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+.edit-item-button
+{
+    width = 20px;
+    height = 20px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: 1.6rem;
+    transform: translateY(-50%);
+}
+.delete-item-button
+{
+    width = 20px;
+    height = 20px;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+button .tooltip
+{
+  opacity: 0;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 3px;
+  position: absolute;
+  z-index: 1;
+  top: -50%; /* Position above the button */
+  left: 50%;
+  transform: translate(-50%, -80%);
+  white-space: nowrap; /* Prevent text wrapping */
+  pointer-events: none; /* Ensure tooltip doesn't affect hover state */
+  transition: opacity .4s ease-in-out;
+}
+button:hover .tooltip
+{
+  opacity: 100;
+}
+
+.list-label span, .list-item span
+{
+    cursor: pointer;
+}
+
+button svg {display: block;}
+ul {padding: 0px;}
+h2 {margin: 0px;}
+
+.item-checkbox-wrapper
+{
+    padding: 0;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 3.4rem;
+}
+
+.item-checkbox-wrapper *,
+.item-checkbox-wrapper *::before,
+.item-checkbox-wrapper *::after
+{
+    box-sizing: border-box;
+}
+
+.item-checkbox-wrapper label {
+display: block;
+width: 16px;
+height: 16px;
+cursor: pointer;
+}
+
+.item-checkbox-wrapper input {
+visibility: hidden;
+display: none;
+}
+
+.item-checkbox-wrapper input:checked ~ .checkbox {
+transform: rotate(45deg) translateY(-30%);
+width: 8px;
+margin-left: 2px;
+border-color: #24c78e;
+border-top-color: transparent;
+border-left-color: transparent;
+border-radius: 0;
+}
+
+.item-checkbox-wrapper .checkbox {
+display: block;
+width: inherit;
+height: inherit;
+border: 1.5px solid black;
+border-radius: 3px;
+transition: all 0.375s;
+}
+
+.list-item:has(input:checked) .item-name
+{
+    text-decoration: line-through;
+    color: #464646;
+}
